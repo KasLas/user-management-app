@@ -50,6 +50,12 @@ const AddUser = (props) => {
     if (+enteredUserAge < 1) {
       return;
     }
+    const inputData = {
+      id: Math.random().toString(),
+      name: enteredUserName,
+      age: enteredUserAge,
+    };
+    props.onFormSubmit(inputData);
 
     console.log(enteredUserName, enteredUserAge);
 
