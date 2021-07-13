@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Card from "../UI/Card";
 import Button from "../UI/Button";
@@ -25,20 +25,40 @@ const StyledForm = styled.form`
   }
 `;
 
-const AddUser = () => {
+const AddUser = (props) => {
+  const [enteredUserName, setEnteredUserName] = useState("");
+  const [enteredUserAge, setEnteredUserAge] = useState("");
+
+  const nameInputChangeHandler = (event) => {
+    setEnteredUserName(event.target.value);
+  };
+
+  const ageInputChangeHandler = (event) => {
+    setEnteredUserAge(event.target.value);
+  };
+
   const addUserHandler = (event) => {
     event.preventDefault();
-    alert("submitted");
+    console.log(enteredUserName, enteredUserAge);
   };
 
   return (
     <Card>
       <StyledForm onSubmit={addUserHandler}>
         <label htmlFor="userName">Username</label>
-        <input id="userName" type="text" />
-        <label htmlFor="userAge">Age (years)</label>
-        <input id="userAge" type="number" />
-        {/* <button type="submit">Add User</button> */}
+        <input
+          id="userName"
+          type="text"
+          value={enteredUserName}
+          onChange={nameInputChangeHandler}
+        />
+        <label htmlFor="userAge">Age (Years)</label>
+        <input
+          id="userAge"
+          type="number"
+          value={enteredUserAge}
+          onChange={ageInputChangeHandler}
+        />
         <Button type="submit" buttonText="Add User" />
       </StyledForm>
     </Card>
