@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import Button from "./Button";
-import Card from "./Card";
 
 const StyledCard = styled.div`
   background: white;

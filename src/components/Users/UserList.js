@@ -16,7 +16,7 @@ const StyledList = styled.ul`
 const UserList = (props) => {
   return (
     <Card>
-      <h2>tis is the list</h2>
+      <h2>User List</h2>
       <StyledList>
         {props.users.map((user) => {
           return (
