@@ -21,7 +21,11 @@ const StyledButton = styled.button`
 `;
 
 const Button = (props) => {
-  return <StyledButton>{props.buttonText}</StyledButton>;
+  return (
+    <StyledButton type={props.type || "button"} onClick={props.onClick}>
+      {props.buttonText}
+    </StyledButton>
+  );
 };
 
 export default Button;
