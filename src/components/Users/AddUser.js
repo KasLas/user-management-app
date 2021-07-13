@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Card from "../UI/Card";
+import Button from "../UI/Button";
 
 const StyledForm = styled.form`
   & label {
@@ -37,7 +38,8 @@ const AddUser = () => {
         <input id="userName" type="text" />
         <label htmlFor="userAge">Age (years)</label>
         <input id="userAge" type="number" />
-        <button type="submit">Add User</button>
+        {/* <button type="submit">Add User</button> */}
+        <Button type="submit" buttonText="Add User" />
       </StyledForm>
     </Card>
   );
