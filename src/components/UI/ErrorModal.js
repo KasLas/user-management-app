@@ -1,4 +1,5 @@
-import React from "react";
+import React, { Fragment } from "react";
+import ReactDom from "react-dom";
 import styled from "styled-components";
 import Button from "./Button";
 
@@ -52,22 +53,42 @@ const BackDrop = styled.div`
   background: rgba(0, 0, 0, 0.75);
 `;
 
+const ModalBackDrop = (props) => {
+  return <BackDrop onClick={props.onErrorClose} />;
+};
+
+const ErrorOverlay = (props) => {
+  return (
+    <StyledCard>
+      <StyledHeader>
+        <h2>{props.header}</h2>
+      </StyledHeader>
+      <StyledDiv>
+        <p>{props.message}</p>
+      </StyledDiv>
+      <StyledFooter>
+        <Button buttonText="Okay" onClick={props.onErrorClose} />
+      </StyledFooter>
+    </StyledCard>
+  );
+};
+
 const ErrorModal = (props) => {
   return (
-    <>
-      <BackDrop onClick={props.onErrorClose} />
-      <StyledCard>
-        <StyledHeader>
-          <h2>{props.header}</h2>
-        </StyledHeader>
-        <StyledDiv>
-          <p>{props.message}</p>
-        </StyledDiv>
-        <StyledFooter>
-          <Button buttonText="Okay" onClick={props.onErrorClose} />
-        </StyledFooter>
-      </StyledCard>
-    </>
+    <Fragment>
+      {ReactDom.createPortal(
+        <ModalBackDrop onErrorClose={props.onErrorClose} />,
+        document.getElementById("modal-backdrop")
+      )}
+      {ReactDom.createPortal(
+        <ErrorOverlay
+          header={props.header}
+          message={props.message}
+          onErrorClose={props.onErrorClose}
+        />,
+        document.getElementById("modal-overlay")
+      )}
+    </Fragment>
   );
 };
 
