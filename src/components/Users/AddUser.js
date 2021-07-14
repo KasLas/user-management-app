@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { Fragment, useState } from "react";
 import styled from "styled-components";
 import Card from "../UI/Card";
 import Button from "../UI/Button";
@@ -79,7 +79,7 @@ const AddUser = (props) => {
   };
 
   return (
-    <div>
+    <Fragment>
       {error && (
         <ErrorModal
           header={error.header}
@@ -106,7 +106,7 @@ const AddUser = (props) => {
           <Button type="submit" buttonText="Add User" />
         </StyledForm>
       </Card>
-    </div>
+    </Fragment>
   );
 };
 
